@@ -1,0 +1,18 @@
+page-home {
+.btnFlex {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+.btnFlex button:first-child {
+    margin-right: 10px;
+}
+.editIcon {
+    width: 40px !important;
+}
+.note {
+    text-align: center;
+    font-size: 18px;
+}
+}

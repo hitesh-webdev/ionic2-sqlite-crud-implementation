@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{editForm == true ? 'Update Employee' : 'Add Employee'}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+<ion-list>
+    
+  <ion-item>
+    <ion-label floating>Name</ion-label>
+    <ion-input [(ngModel)]="name" formControlName="name" type="text" [class.invalid]="!employeeForm.controls.name.valid && employeeForm.controls.name.touched"></ion-input>
+  </ion-item>
+  <p class="help-block" *ngIf="!employeeForm.controls.name.valid && employeeForm.controls.name.touched">*Please enter a Name.</p>
+
+  <ion-item>
+    <ion-label floating>Age</ion-label>
+    <ion-input [(ngModel)]="age" formControlName="age" type="number" [class.invalid]="!employeeForm.controls.age.valid && employeeForm.controls.age.touched"></ion-input>
+  </ion-item>
+  <p class="help-block" *ngIf="!employeeForm.controls.age.valid && employeeForm.controls.age.touched">*Please enter an Age.</p>
+
+  <ion-item>
+    <ion-label floating>Email</ion-label>
+    <ion-input [(ngModel)]="email" formControlName="email" type="email" [class.invalid]="!employeeForm.controls.email.valid && employeeForm.controls.email.touched"></ion-input>
+  </ion-item>
+  <p class="help-block" *ngIf="!employeeForm.controls.email.valid && employeeForm.controls.email.touched">*Please enter an Email.</p>
+
+  <button class="addBtn" ion-button block large type="submit" [disabled]="!employeeForm.valid">{{editForm == true ? 'UPDATE' : 'ADD'}}</button>
+
+</ion-list>
+
+</form>
+
+</ion-content>

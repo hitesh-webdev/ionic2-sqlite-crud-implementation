@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons end>
+      <button (click)="addEmployeeNav()" ion-button icon-only clear>
+        <ion-icon name="md-add"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      SQLite Implementation
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-item *ngFor="let employee of employees">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-8>
+            <h2>Name: {{employee.name}}</h2>
+            <p>Age: {{employee.age}}</p>
+            <p>Email: {{employee.email}}</p>
+          </ion-col>
+          <ion-col col-4 class="btnFlex">
+            <button (click)="editEmployee(employee.id)" ion-button icon-only>
+              <ion-icon name="md-create" class="editIcon"></ion-icon>
+            </button>
+            <button (click)="deleteEmployee(employee.id)" ion-button icon-only color="danger">
+              <ion-icon name="md-trash" class="editIcon"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>  
+
+  </ion-list>
+
+  <p *ngIf="employees.length == 0" class="note">No data exits in the table.</p>
+
+</ion-content>
