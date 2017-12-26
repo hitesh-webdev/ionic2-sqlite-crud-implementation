@@ -1,0 +1,41 @@
+# Android data storage methods
+
+## Internal Storage
+The Internal Storage data storage method is specifically for those situations where you need to store data to the device filesystem, 
+but you do not want any other app (even the user) to read this data. 
+Data stored using the Internal Storage method is completely private to your application, and are deleted from the device
+when your app is uninstalled.
+
+## External Storage
+However, beginning with Android 4.4, you can actually write to a “private” external storage folder without requesting 
+WRITE_EXTERNAL_STORAGE. The “private” folder can be read by other applications and by the user, however, data stored
+in these folders are not scanned by the media scanner. 
+This app_private folder is located in the Android/data directory, and is also deleted when your app is uninstalled.
+
+## SQLite
+Finally, Android provides support for apps to use SQLite databases for data storage. Databases created are app specific, 
+and are available to any class within the app, but not to outside applications.
+
+## Cache
+Android also provides a means to cache some data, rather than store it permanently. 
+Data can be cached in either internal storage or external storage. 
+Cache files may be deleted by the Android system when the device is low on space.
+Although the Android device can delete your cache files if needed, you should not rely on this behavior. 
+Instead, you should maintain the size of your cache files yourself, and always try to keep your cache within a reasonable limit, 
+like the recommended 1MB.
+
+
+# SQLite Description 
+It is not a client-server database engine. Rather, it is embedded into the end program. 
+What this means is that you can bundle a SQLite database with your application, and get access to all the power of a 
+relational database within your application. SQLite is native to both Android and iOS, and every app can create and use 
+an SQLite database if they so desire. In fact, in Android, device contacts, and media are stored and referenced using SQLite databases.
+
+SQLite databases store values in one of five possible storage classes:
+
+NULL – For null value.
+INTEGER – For integers containing as much as 8 bytes (thats from byte to long).
+REAL – Numbers with floating point.
+TEXT – Text strings, stored using the database encoding (UTF-8 or UTF-16).
+BLOB – Binary data, stored exactly as input.
+
